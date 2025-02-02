@@ -8,10 +8,6 @@ ractorwrap-broken is an attempt to create a wrapper allowing sharing non-shareab
 
 ## Usage
 
-```
-gcc -I /path/to/include/ruby-3.5.0+0 -I /path/to/master/include/ruby-3.5.0+0/x86_64-linux -fPIC -shared -o wrapper.so wrapper.c
-```
-
 ```ruby
 require_relative 'ractorwrap'
 

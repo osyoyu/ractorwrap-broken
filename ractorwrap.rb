@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'wrapper'
-
 class RactorWrap
   def wrap(obj)
     @ractor = Ractor.new do
@@ -12,7 +10,7 @@ class RactorWrap
       end
     end
     @ractor.send(obj, move: true)
-    self.freeze
+    # self.freeze
     self
   end
 
