@@ -33,3 +33,10 @@ end
 r1.take
 r2.take
 ```
+
+In this example, the result of `ary.push` (in r1) is sometimes observed as the result of `ary.length` (r2) and vice versa. This happens when events happen in the following order:
+
+1. r1 calls `ary.push`. `ractor#send([:push, ...])` is called. The wrap yields the result of `ary.push`.
+2. r2 calls `ary.length`. `ractor#send([:length, ...])` is called. The wrap yields the result of `ary.length`. So far, so good.
+3. r2 calls `ractor#take`. It gets the result of `ary.push` which was yielded first. Now things has gone wrong.
+4. r1 calls `ractor#take`. It gets the result of `ary.length` which was yielded second.
